@@ -30,15 +30,16 @@
     <context:component-scan base-package="com.db"/>
     <!-- 导入configs.properties文件,系统底层会创建一个
          Bean对象(类型为Properties类型)-->
-    <!--
+    
     <util:properties 
           id="cfg"
           location="classpath:configs.properties"/>
-      -->
+     
     <!-- 导入spring-model.xml文件(MVC中M信息会配置到model文件) -->
     <import resource="classpath:spring-model.xml"/>
     <!-- 导入spring-shiro.xml文件(权限配置) -->
     <import resource="classpath:spring-web.xml"/> 
+     <import resource="classpath:spring-mybatis.xml"/> 
     
     <!-- 添加AOP配置(启用AOP功能) -->
     
