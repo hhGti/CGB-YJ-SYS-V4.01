@@ -1,0 +1,105 @@
+					        <div class="panel">
+					            <div class="pad-all bord-btm">
+					                <a  class="btn btn-block btn-success">撰写邮件</a>
+					            </div>
+					
+					            <p class="pad-hor mar-top text-main text-bold">文件夹</p>
+					            <div class="list-group bg-trans pad-btm bord-btm">
+					                <a  class="list-group-item text-semibold text-main" id="inbox">
+					                    <span class="badge badge-success pull-right">7</span>
+					                    <span class="text-main"><i class="demo-pli-inbox-full icon-lg icon-fw"></i>收件箱</span>
+					                </a>
+					                <a  class="list-group-item" id="draft">
+					                    <i class="demo-pli-file icon-lg icon-fw"></i>
+					                    	草稿箱
+					                </a>
+					                <a  class="list-group-item" id="sent">
+					                    <i class="demo-pli-mail-send icon-lg icon-fw"></i>
+					                    	发件箱
+					                </a>
+					                <a  class="list-group-item" id="recycle">
+					                    <i class="demo-pli-recycling icon-lg icon-fw"></i>
+					                    	回收站
+					                </a>
+					            </div>
+					
+					            <div class="list-group bg-trans pad-ver">
+					                <a href="#" class="list-group-item"><i class="demo-pli-male-female icon-lg icon-fw"></i>地址簿</a>
+					                <a href="#" class="list-group-item"><i class="demo-pli-folder-with-document icon-lg icon-fw"></i>用户文件夹</a>
+					            </div>
+					
+					            <!-- Friends -->
+					            <div class="list-group bg-trans pad-ver bord-ver">
+					                <p class="pad-hor text-main text-bold"><span class="pull-right label label-info">New</span>Friends</p>
+					
+					                <!-- Menu list item -->
+					                <a href="#" class="list-group-item list-item-sm">
+					                    <span class="badge badge-purple badge-icon badge-fw pull-left"></span>
+					                    Joey K. Greyson
+					                </a>
+					                <a href="#" class="list-group-item list-item-sm">
+					                    <span class="badge badge-info badge-icon badge-fw pull-left"></span>
+					                    Andrea Branden
+					                </a>
+					                <a href="#" class="list-group-item list-item-sm">
+					                    <span class="badge badge-pink badge-icon badge-fw pull-left"></span>
+					                    Lucy Moon
+					                </a>
+					                <a href="#" class="list-group-item list-item-sm">
+					                    <span class="badge badge-success badge-icon badge-fw pull-left"></span>
+					                    Johny Juan
+					                </a>
+					                <a href="#" class="list-group-item list-item-sm">
+					                    <span class="badge badge-danger badge-icon badge-fw pull-left"></span>
+					                    Susan Sun
+					                </a>
+					            </div>
+					
+					            <p class="pad-hor text-main text-bold">标签</p>
+					            <ul class="list-inline mar-hor">
+					                <li class="tag tag-sm">
+					                    <a href="#"><i class="demo-pli-tag"></i>家庭</a>
+					                </li>
+					                <li class="tag tag-sm">
+					                    <a href="#"><i class="demo-pli-tag"></i>家</a>
+					                </li>
+					                <li class="tag tag-sm">
+					                    <a href="#"><i class="demo-pli-tag"></i>工作</a>
+					                </li>
+					                <li class="tag tag-sm">
+					                    <a href="#"><i class="demo-pli-tag"></i>电影</a>
+					                </li>
+					                <li class="tag tag-sm">
+					                    <a href="#"><i class="demo-pli-tag"></i>音乐</a>
+					                </li>
+					                <li class="tag tag-sm">
+					                    <a href="#"><i class="demo-pli-tag"></i>拍照</a>
+					                </li>
+					            </ul>
+					        </div>
+					        <script>
+					        
+					        $(function(){
+					        	//.btn-block设置点击事件，加载发送邮件页面
+					        	$(".btn-block").click(function(){
+					    			$("#page-content").load("mailbox-compose.html");
+					    	});
+					        	//给左边共有框里面的发送箱，回收箱加点击事件
+				    			$("#inbox").click(function(){
+				    				alert("Inbox");
+				    				$("#page-content").empty();
+				    				$("#page-content").load("mailbox.html");
+				    			});
+				    			$("#draft").click(function(){
+				    				alert("Draft");
+				    			});
+				    			$("#sent").click(function(){
+				    				alert("Sent");
+				    			});
+				    			$("#recycle").click(function(){
+				    				alert("Recycle");
+				    			});
+					     	
+					        })
+					     	
+					        </script>
