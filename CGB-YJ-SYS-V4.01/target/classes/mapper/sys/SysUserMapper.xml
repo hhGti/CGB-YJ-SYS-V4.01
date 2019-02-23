@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.email.sys.dao.SysUserDao">
+  <select id="selectUser" resultType="com.email.sys.entity.SysUser">
+  select * from email_users where username=#{userName};
+  </select>
+  
+  <select id="selectUserById" resultType="com.email.sys.entity.SysUser">
+  select * from email_users where id=#{id}
+  </select>
+  
+  <select id="selectUsers" resultType="com.email.sys.entity.SysUser">
+  select * from email_users 
+  <include refid="queryWhereId"/>
+	order by createdTime desc  
+  </select>
+  
+  <insert id="insertUser" parameterType="com.email.sys.entity.SysUser">
+  insert into email_users 
+  (username,password,mobile,salt,valid,email,
+      createdTime,modifiedTime,createdUser,modifiedUser,adminId)
+      value (#{username},#{password},#{mobile},#{salt},#{valid},#{email},
+      now(),now(),#{createdUser},#{modifiedUser},#{adminId})
+  </insert>
+  
+  <update id="updateUser" parameterType="com.email.sys.entity.SysUser">
+  update email_users
+  <set>
+             <if test="username!=null and username!=''">
+               username=#{username},
+             </if>
+             <if test="email!=null and email!=''">
+                  email=#{email},
+             </if>
+             <if test="mobile!=null and mobile!=''">
+                mobile=#{mobile},
+             </if>
+             <if test="modifiedUser!=null and modifiedUser!=''">
+                modifiedUser=#{modifiedUser},
+             </if>
+             modifiedTime=now()
+          </set>
+          where id=#{id}     
+  </update>
+  
+  <update id="updatePw">
+  	update email_users
+  	set password=#{npw},
+  		salt=#{salt}
+  	where id=#{id}
+  </update>
+  
+   <!-- 借助此元素对共性数据进行提取 -->
+    <sql id="queryWhereId">
+          <where>
+            <if test="username!=null and username!=''">
+               username like concat("%",#{username},"%")
+            </if>
+          </where>
+    </sql>
+  </mapper>

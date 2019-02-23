@@ -1,0 +1,77 @@
+  <form class="form-horizontal">
+					                <div class="panel-body">
+					                     <div class="form-group" id="username">
+					                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">用户名</label>
+					                        <div class="col-sm-6">
+					                            <input type="text" placeholder="" class="form-control" id="demo-is-inputnormal">
+					                        </div>
+					                    </div>
+					                      <div class="form-group" id="mail">
+					                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">邮箱</label>
+					                        <div class="col-sm-6">
+					                            <input type="text" placeholder="" class="form-control" id="demo-is-inputnormal">
+					                        </div>
+					                    </div>
+					                      <div class="form-group" id="tel">
+					                        <label for="demo-is-inputnormal" class="col-sm-3 control-label">电话</label>
+					                        <div class="col-sm-6">
+					                            <input type="text" placeholder="" class="form-control" id="demo-is-inputnormal">
+					                        </div>
+					                    </div>
+					                    </div>
+					                     
+					                <div class="panel-footer">
+					                    <div class="row">
+					                        <div class="col-sm-9 col-sm-offset-3">
+					                            <button class="btn btn-mint" type="submit">确认</button>
+					                            <button class="btn btn-warning" type="reset">取消</button>
+					                        </div>
+					                    </div>
+					                </div>
+					            </form>
+					            <script>
+					            $(function(){
+					            	doLoadToForm();
+					            	$(".btn-mint").click(doCommitPerson);
+					            	$(".btn-warning").click(doCancel);
+					            });
+					            
+					            function doLoadToForm(){
+					            	var person = $("#personalMessage").data("person");
+					            	console.log(person);
+					            	$("#username").find("input").val(person.username);
+					            	$("#mail").find("input").val(person.email);
+					            	$("#tel").find("input").val(person.mobile);
+					            }
+					            
+					            function doCommitPerson(){
+					            	var params = doGetForm();
+					            	console.log(params);
+					            	var url ="user/doUpdateUser.do";
+					            	$.post(url,params,function(result){
+					            		if(result.state==1)
+					            			alert("修改成功");
+					            		else
+					            			alert("修改失败");
+					            	});
+					            }
+					            
+					            function doGetForm(){
+					            	var params;
+					            	var username = $("#username").find("input").val();
+					            	var email = $("#mail").find("input").val();
+					            	var mobile =$("#tel").find("input").val();
+					            	var id = $("#personalMessage").data("person").id;
+					            	params = {
+					            			"username":username,
+					            			"email":email,
+					            			"mobile":mobile,
+					            			"id":id
+					            	};
+					            	return params;
+					            }
+					            
+					            function doCancel(){
+					            	window.location.reload()
+					            }
+					            </script>
